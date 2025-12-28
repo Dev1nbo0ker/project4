@@ -83,34 +83,6 @@ void PrintVisitOrder(const std::vector<int>& order) {
     std::cout << "\n";
 }
 
-static void PrintTreeRecursive(int v, const std::vector<std::vector<int>>& children, int depth) {
-    for (int i = 0; i < depth; ++i) {
-        std::cout << "  ";
-    }
-    std::cout << v << "\n";
-    for (int child : children[v]) {
-        PrintTreeRecursive(child, children, depth + 1);
-    }
-}
-
-void PrintTree(const std::vector<int>& parent, int root) {
-    if (root < 1 || root >= static_cast<int>(parent.size())) {
-        std::cout << "树根不合法.\n";
-        return;
-    }
-    std::vector<std::vector<int>> children(parent.size());
-    for (size_t v = 1; v < parent.size(); ++v) {
-        int p = parent[v];
-        if (p > 0) {
-            children[p].push_back(static_cast<int>(v));
-        }
-    }
-    for (auto& list : children) {
-        std::sort(list.begin(), list.end());
-    }
-    PrintTreeRecursive(root, children, 0);
-}
-
 std::vector<int> RebuildPath(const std::vector<int>& parent, int s, int v) {
     std::vector<int> path;
     if (v < 1 || v >= static_cast<int>(parent.size())) {

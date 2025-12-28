@@ -13,8 +13,7 @@ static void ShowMenu() {
     std::cout << "3. 显示图 + 导出 graph.dot\n";
     std::cout << "4. BFS（AML）\n";
     std::cout << "5. 非递归 DFS（自定义栈）\n";
-    std::cout << "6. 生成树树形输出\n";
-    std::cout << "7. 最短路径（Dijkstra）\n";
+    std::cout << "6. 最短路径（Dijkstra）\n";
     std::cout << "0. 退出\n";
     std::cout << "请选择:";
 }
@@ -105,23 +104,6 @@ int main() {
             adj.ExportTreeDot("dfs_tree.dot", dfsTreeEdges);
             std::cout << "已导出 dfs_tree.dot\n";
         } else if (choice == 6) {
-            if (!adj.IsReady()) {
-                std::cout << "请先建图.\n";
-                continue;
-            }
-            if (bfsParent.empty()) {
-                std::cout << "请先执行 BFS.\n";
-            } else {
-                std::cout << "BFS 生成树:\n";
-                PrintTree(bfsParent, defaultStart);
-            }
-            if (dfsParent.empty()) {
-                std::cout << "请先执行 DFS.\n";
-            } else {
-                std::cout << "DFS 生成树:\n";
-                PrintTree(dfsParent, defaultStart);
-            }
-        } else if (choice == 7) {
             if (!adj.IsReady()) {
                 std::cout << "请先建图.\n";
                 continue;
