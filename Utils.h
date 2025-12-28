@@ -20,7 +20,6 @@ bool ReadGraphFromFile(const std::string& path, int& n, int& m, std::vector<Edge
 void PrintEdgeList(const std::vector<std::pair<int, int>>& edges);
 void PrintVisitOrder(const std::vector<int>& order);
 
-void PrintTree(const std::vector<int>& parent, int root);
 std::vector<int> RebuildPath(const std::vector<int>& parent, int s, int v);
 
 #endif
