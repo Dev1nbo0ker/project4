@@ -1,0 +1,28 @@
+# Visual Studio 缓存
+.vs/
+
+# 编译输出与中间文件（MSVC）
+Debug/
+Release/
+x64/
+x86/
+
+# 常见中间文件
+*.obj
+*.pdb
+*.ilk
+*.idb
+*.pch
+*.ipch
+*.tlog
+*.log
+
+# 可执行/库（通常不提交）
+*.exe
+*.dll
+*.lib
+*.exp
+
+*.dot
+*.png
+*.svg
