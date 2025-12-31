@@ -25,6 +25,7 @@ void GraphAdjList::AddEdge(int u, int v, int w) {
     adj_[v].push_back({u, w});
 }
 
+//对邻接表排序,有多个未访问邻居时按升序访问
 void GraphAdjList::SortAdjacency() {
     for (auto& list : adj_) {
         std::sort(list.begin(), list.end(), [](const AdjEdge& a, const AdjEdge& b) {
@@ -117,9 +118,10 @@ void GraphAdjList::DFSIterative(int start, std::vector<int>& order,
     parent.assign(n_ + 1, 0);
     std::vector<bool> visited(n_ + 1, false);
 
+    //栈帧结构
     struct Frame {
-        int v;
-        size_t nextIdx;
+        int v;//当前处理的节点
+        size_t nextIdx;//下次要处理的邻接边的下标
     };
 
     MyStack<Frame> stack;
@@ -143,7 +145,6 @@ void GraphAdjList::DFSIterative(int start, std::vector<int>& order,
             parent[to] = v;
             treeEdges.push_back({v, to});
             order.push_back(to);
-            // 使用栈帧保存“下一条边索引”，严格模拟递归 DFS 的回溯顺序
             stack.push({to, 0});
         }
     }
@@ -197,18 +198,9 @@ void GraphAdjList::Dijkstra(int start, std::vector<int>& parent, std::vector<lon
 
 void GraphAdjList::ExportShortestPathDot(const std::string& path, int s, int t,
                                          const std::vector<int>& parent) const {
-    std::vector<int> onPath(n_ + 1, 0);
     int cur = t;
-    while (cur != 0) {
-        onPath[cur] = 1;
-        if (cur == s) {
-            break;
-        }
-        cur = parent[cur];
-    }
 
     std::set<std::pair<int, int>> pathEdges;
-    cur = t;
     while (cur != 0 && cur != s) {
         int p = parent[cur];
         if (p == 0) {

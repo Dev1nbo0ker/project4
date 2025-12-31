@@ -1,13 +1,13 @@
-# Visual Studio 缓存
+# Visual Studio 锟斤拷锟斤拷
 .vs/
 
-# 编译输出与中间文件（MSVC）
+# 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷屑锟斤拷募锟斤拷锟組SVC锟斤拷
 Debug/
 Release/
 x64/
 x86/
 
-# 常见中间文件
+# 锟斤拷锟斤拷锟叫硷拷锟侥硷拷
 *.obj
 *.pdb
 *.ilk
@@ -16,8 +16,9 @@ x86/
 *.ipch
 *.tlog
 *.log
+*.user
 
-# 可执行/库（通常不提交）
+# 锟斤拷执锟斤拷/锟解（通锟斤拷锟斤拷锟结交锟斤拷
 *.exe
 *.dll
 *.lib

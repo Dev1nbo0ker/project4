@@ -67,6 +67,7 @@ int main() {
             std::string path;
             std::cin >> path;
             if (!ReadGraphFromFile(path, n, m, edges)) {
+                std::cout << "建图失败:文件格式错误\n";
                 continue;
             }
             BuildGraph(adj, aml, n, edges);

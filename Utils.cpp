@@ -5,12 +5,14 @@
 #include <iostream>
 #include <unordered_set>
 
+//把每条边映射到唯一一个64位key,方便检测重边
 uint64_t MakeEdgeKey(int u, int v) {
     int a = u < v ? u : v;
     int b = u < v ? v : u;
     return (static_cast<uint64_t>(a) << 32) | static_cast<uint32_t>(b);
 }
 
+//通过输入读入图
 static bool ReadGraphFromStream(std::istream& in, int& n, int& m, std::vector<EdgeInput>& edges) {
     if (!(in >> n >> m)) {
         return false;
@@ -21,7 +23,9 @@ static bool ReadGraphFromStream(std::istream& in, int& n, int& m, std::vector<Ed
     }
 
     edges.clear();
+    //预分配容量,防止多次扩容
     edges.reserve(static_cast<size_t>(m));
+    //存key,查重
     std::unordered_set<uint64_t> seen;
 
     for (int i = 0; i < m; ++i) {
@@ -83,6 +87,7 @@ void PrintVisitOrder(const std::vector<int>& order) {
     std::cout << "\n";
 }
 
+//计算最短路径时，根据终点重建路径
 std::vector<int> RebuildPath(const std::vector<int>& parent, int s, int v) {
     std::vector<int> path;
     if (v < 1 || v >= static_cast<int>(parent.size())) {
